@@ -22,12 +22,10 @@ RUN cd $HOME \
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
-USER jboss
+#USER jboss
 
 # Create user jvalenzuela with password shadow99g
-RUN /opt/jboss/wildfly/bin/add-user.sh jvalenzuela shadow99g --silent
-
-
+RUN /opt/jboss/wildfly/bin/add-user.sh root root --silent
  
 # Run
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0", "-c", "standalone.xml"]
